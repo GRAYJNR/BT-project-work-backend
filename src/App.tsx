@@ -5,7 +5,7 @@ import './App.css'
 
 function App() {
   return (
-    <div className="App" style={{padding:"5px 20px"}}>
+    <div className="App" style={{padding:"5px 20px", justifyContent:'center', display: 'flex'}}>
       <h1>Appointment Form</h1>
       <AppointmentForm />
     </div>
