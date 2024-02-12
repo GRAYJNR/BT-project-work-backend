@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-const countries = [
-  { code: '+1', name: 'United States' },
-  { code: '+44', name: 'United Kingdom' },
-  { code: '+91', name: 'India' },
-  { code: '233', name: 'Ghana'}
-];
+// const countries = [
+//   { code: '+1', name: 'United States' },
+//   { code: '+44', name: 'United Kingdom' },
+//   { code: '+91', name: 'India' },
+//   { code: '233', name: 'Ghana'}
+// ];
 
 const AppointmentForm: React.FC = () => {
   const [name, setName] = useState('');
