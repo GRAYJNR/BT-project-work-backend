@@ -1,7 +1,6 @@
 import {Route, createBrowserRouter, createRoutesFromElements} from "react-router-dom"
 import RootLayout from "../components/layouts/RootLayout";
-import App from "../App";
-import Shop from "../Shop";
+import Shop from "../components/Shop";
 
 
 const AppRouter = createBrowserRouter(
@@ -9,7 +8,7 @@ const AppRouter = createBrowserRouter(
     <>
 
             <Route path="/" element={<RootLayout />}>
-                <Route index path="dashboard" element={<App />} />
+                <Route index element={<Shop />} />
                 <Route path="shop" element={<Shop />} />
             </Route>
 
