@@ -20,14 +20,14 @@ const MENU_ITEMS = [
     {
 
         title: "contact",
-        href: "/contact",
+        href: "#",
         displayTitle: "Contact"
     },
     
     {
 
         title: "about-us",
-        href: "/about-us",
+        href: "#",
         displayTitle: "About us"
     },
 
@@ -50,23 +50,9 @@ export default function Navigation() {
                             title="Company"
                             className="inline-flex items-center mr-8"
                         >
-                            <svg
-                                className="w-8 text-teal-accent-400"
-                                viewBox="0 0 24 24"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeMiterlimit="10"
-                                stroke="currentColor"
-                                fill="none"
-                            >
-                                <rect x="3" y="1" width="7" height="12" />
-                                <rect x="3" y="17" width="7" height="6" />
-                                <rect x="14" y="1" width="7" height="6" />
-                                <rect x="14" y="11" width="7" height="12" />
-                            </svg>
+                           <img className="h-10" src="/apple-touch-icon.png" alt="" />
                             <span className="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">
-                                Company
+                                {/* BeautyTeknikx */}
                             </span>
                         </Link>
                         <ul className="items-center hidden space-x-8 lg:flex">
