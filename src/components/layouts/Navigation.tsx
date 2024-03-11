@@ -60,14 +60,14 @@ export default function Navigation() {
                             {
                                 MENU_ITEMS.map(menu => (
                                     <li key={menu.title}>
-                                        <a
-                                            href="/"
+                                        <Link
+                                            to={menu.href}
                                             aria-label={menu.displayTitle}
                                             title={menu.displayTitle}
                                             className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
                                         >
                                             {menu.displayTitle}
-                                        </a>
+                                        </Link>
                                     </li>
                                 ))
                             }
@@ -170,14 +170,14 @@ export default function Navigation() {
                                             {
                                                 MENU_ITEMS.map(menu => (
                                                     <li key={menu.title}>
-                                                        <a
-                                                            href="/"
+                                                        <Link
+                                                            to={menu.href}
                                                             aria-label={menu.displayTitle}
                                                             title={menu.displayTitle}
                                                             className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
                                                         >
                                                             {menu.displayTitle}
-                                                        </a>
+                                                        </Link>
                                                     </li>
                                                 ))
                                             }

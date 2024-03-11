@@ -2,7 +2,7 @@ import {Route, createBrowserRouter, createRoutesFromElements} from "react-router
 import RootLayout from "../components/layouts/RootLayout";
 
 import Shop from "../pages/Shop";
-import Apointments from "../pages/Appointments";
+import Appointments from "../pages/Appointments";
 
 
 
@@ -12,7 +12,7 @@ const AppRouter = createBrowserRouter(
             <Route path="/" element={<RootLayout />}>
                 <Route index element={<Shop />} />
                 <Route path="shop" element={<Shop />} />
-                <Route path="appointments" element={<Apointments />} />
+                <Route path="appointments" element={<Appointments />} />
             </Route>
 
     </>

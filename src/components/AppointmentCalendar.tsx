@@ -2,10 +2,10 @@ import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { Dialog, Transition } from '@headlessui/react';
-import { Fragment, useState } from 'react';
+import { Fragment, useCallback, useEffect, useState } from 'react';
 import timeGridPlugin from "@fullcalendar/timegrid";
-
-
+import useAppointment from '../hooks/useAppointment';
+import { IAppointment } from '../@types';
 
 
 interface IAppointmentData {
@@ -19,13 +19,47 @@ export default function AppointmentCalendar() {
 
     const [appointmentDate, setAppointmentDate] = useState<IAppointmentData | null>();
     const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [appointments, setAppointments] = useState<IAppointment[]>([]);
+
+    const allAppointments = useAppointment();
+
+
+    useEffect(() => {
+        allAppointments.then(a => setAppointments(a.appointments ?? []))
+    }, [allAppointments])
+
+    const events = useCallback(() => {
+        // if (!appointments) return;
+
+        return appointments.map(appointment => ({
+            id: appointment.appointments_id.toString(),
+            title: appointment.start_date + "T" + appointment.time,
+            date: appointment.start_date + "T" + appointment.time,
+            // url: "/appointments/" + appointment.appointment_id,
+            // extendedProps: {
+            //     user: {
+            //         firstName: appointment.appointer.first_name,
+            //         lastName: appointment.appointer.last_name,
+            //         avatar: appointment.appointer.avatar,
+            //         calendar_id: appointment.appointer.calendar_id,
+            //         isPast: appointment.isPast,
+            //     }
+            // }
+        }))
+
+    }, [appointments]);
+
+
+
 
 
 
     return (
         <>
 
+
             <FullCalendar
+
                 plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
                 initialView="timeGridWeek"
                 selectable={true}
@@ -34,6 +68,9 @@ export default function AppointmentCalendar() {
                     center: 'title',
                     right: 'dayGridMonth,timeGridWeek,timeGridDay'
                 }}
+                eventDisplay='block'
+                events={events()}
+
                 dateClick={(e) => {
                     console.log(e)
                     setIsOpen(!isOpen)
@@ -101,7 +138,7 @@ export default function AppointmentCalendar() {
                                                         type="text"
                                                         name="fullName"
                                                         id="fullName"
-                                                        className="block w-full rounded-md border-0  text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                        className="block p-4 w-full rounded-md border-0  text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                                         placeholder="John Doe"
                                                     />
                                                 </div>
@@ -113,7 +150,7 @@ export default function AppointmentCalendar() {
                                                         type="text"
                                                         name="phoneNumber"
                                                         id="phoneNumber"
-                                                        className="block w-full rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                        className="block p-4 w-full rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                                         placeholder="+233 111 222 11"
                                                     />
                                                 </div>
@@ -122,7 +159,7 @@ export default function AppointmentCalendar() {
                                                 <div className="col-span-full text-right">
                                                     <button
                                                         type="button"
-                                                        className="w-6/12 rounded-md border border-transparent bg-blue-100  text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                                                        className="w-6/12 p-4 rounded-md border border-transparent bg-blue-100  text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                                                         onClick={() => setIsOpen(false)}
                                                     >
                                                         Comfirm Booking

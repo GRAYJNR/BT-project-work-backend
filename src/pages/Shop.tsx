@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Hero from "../components/Hero";
-import Navigation from "../components/layouts/Navigation";
 import ProductCard from "../components/shop/ProductCard";
 
 
@@ -31,12 +30,6 @@ function Shop() {
   return (
 
     <>
-
-
-
-
-
-      <Navigation />
 
       <Hero />
 
