@@ -4,6 +4,7 @@ import Shop from "../pages/Shop";
 import Apointments from "../pages/Appointments";
 
 
+
 const AppRouter = createBrowserRouter(
     createRoutesFromElements(
     <>
